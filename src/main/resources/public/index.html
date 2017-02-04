@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="offlineApp" lang="en">
+<head>
+<meta charset="utf-8">
+<title>offline project</title>
+</head>
+<body>
+	<!-- Header -->
+	<div>
+		<h2>offline project</h2>
+	</div>
+
+	<div class="container" ng-controller="ProjectController">
+		<table>
+			<thead>
+				<tr>
+					<th>#id</th>
+					<th>name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="project in model.projectsFromList | orderBy: 'id'">
+					<td>{{project.id}}</td>
+					<td>{{project.name}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div class="container" ng-controller="TaskController">
+		<table>
+			<thead>
+				<tr>
+					<th>#id</th>
+					<th>name</th>
+					<th>#pid</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="task in model.tasksFromList | orderBy: 'id'">
+					<td>{{task.id}}</td>
+					<td>{{task.name}}</td>
+					<td>{{task.project.id}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+
+
+
+	<!--  here we go -->
+
+
+
+	<!--Script stuff -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+	<script src="app.js"></script>
+	<script src="projectController.js"></script>
+	<script src="projectResource.js"></script>
+	<script src="taskController.js"></script>
+	<script src="taskResource.js"></script>
+
+</body>
+</html>
