@@ -10,12 +10,24 @@ import prototype.repository.ProjectRepository;
 
 @Service
 public class ProjectBusinessService {
-	
+
 	@Autowired
 	private ProjectRepository projectRepository;
-	
-	public List<ProjectEntity> getAllProjects(){
+
+	public List<ProjectEntity> getAllProjects() {
 		return projectRepository.findAll();
+	}
+
+	public void saveProject(ProjectEntity project) {
+		projectRepository.save(project);
+	}
+
+	public void updateProject(ProjectEntity project) {
+		projectRepository.save(project);
+	}
+
+	public void deleteProject(Long projectId) {
+		projectRepository.delete(projectId);
 	}
 
 }

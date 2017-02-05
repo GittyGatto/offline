@@ -15,17 +15,39 @@
 	</div>
 
 	<div class="container" ng-controller="ProjectController">
-		<table>
+
+		<form class="form-inline">
+			<div class="form-group">
+				<label for="exampleInputName2">project name</label> <input
+					type="text" class="form-control" id="exampleInputName2"
+					ng-model="model.name">
+			</div>
+			<button type="submit" c lass="btn btn-primary"
+				ng-click="addProject()">add project</button>
+		</form>
+		<hr>
+
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>#id</th>
-					<th>name</th>
+					<th>project name</th>
+
+					<th
+						ng-class="{'text-success' : !model.isError, 'text-danger' : model.isError }">
+						<span ng-if="model.isError">ERROR: </span> {{model.message}}
+					</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="project in model.projectsFromList | orderBy: 'id'">
 					<td>{{project.id}}</td>
-					<td>{{project.name}}</td>
+					<td><input ng-model="project.name" type="text"
+						value="{{project.name}}"></td>
+					<td><button type="button" class="btn btn-danger"
+							ng-click="delProject(project.id)">delete</button>
+						<button type="button" class="btn btn-success"
+							ng-click="updateProject(project)">update</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -50,14 +72,6 @@
 			</tbody>
 		</table>
 	</div>
-
-
-
-
-
-
-	<!--  here we go -->
-
 
 
 	<!--Script stuff -->
