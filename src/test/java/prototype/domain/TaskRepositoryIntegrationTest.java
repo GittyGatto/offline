@@ -14,36 +14,36 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import prototype.repository.ProjectRepository;
+import prototype.repository.TaskRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @Transactional
-public class ProjectRepositoryIntegrationTest {
+public class TaskRepositoryIntegrationTest {
 
 	@Autowired
-	private ProjectRepository projectRepository;
+	private TaskRepository taskRepository;
 
 	@Test
-	public void saveProject() {
+	public void saveTask() {
 		// given
-		ProjectEntity project = createProject("saveMe");
+		TaskEntity task = createTask("saveMe");
 		// when
-		projectRepository.save(project);
-		Long id = project.getId();
+		taskRepository.save(task);
+		Long id = task.getId();
 		// then
-		ProjectEntity result = projectRepository.findOne(id);
+		TaskEntity result = taskRepository.findOne(id);
 		assertEquals(id, result.getId());
 		assertEquals("saveMe", result.getName());
 	}
 
 	@Test
-	public void getProject() {
+	public void getTask() {
 		// given
-		ProjectEntity project = createAndSaveProject("hallo");
-		Long id = project.getId();
+		TaskEntity task = createAndSaveProject("hallo");
+		Long id = task.getId();
 		// when
-		ProjectEntity result = projectRepository.findOne(id);
+		TaskEntity result = taskRepository.findOne(id);
 		// then
 		assertNotNull(result);
 		assertEquals(id, result.getId());
@@ -51,52 +51,52 @@ public class ProjectRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void updateProject() {
+	public void updateTask() {
 		// given
-		ProjectEntity project = createAndSaveProject("hallo");
-		Long id = project.getId();
+		TaskEntity task = createAndSaveProject("hallo");
 		// when
-		project.setName("ciao");
-		ProjectEntity result = projectRepository.save(project);
+		task.setName("ciao");
+		TaskEntity result = taskRepository.save(task);
 		// then
 		assertNotNull(result);
-		assertEquals(id, result.getId());
+		assertEquals(task.getId(), result.getId());
 		assertEquals("ciao", result.getName());
 	}
 
-	public void deleteProject() {
+	public void deleteTask() {
 		// given
-		ProjectEntity project= createAndSaveProject("hi there");
-		Long id = project.getId();
+		TaskEntity task = createAndSaveProject("hi there");
+		Long id = task.getId();
 		// when
-		projectRepository.delete(id);
+		taskRepository.delete(id);
 		// then
 		try {
-			projectRepository.findOne(id);
+			taskRepository.findOne(id);
 			fail("Expected EmptyResultDataAccessException caused by NoResultException, but non caught.");
 		} catch (Exception ex) {
 			assertTrue((ex instanceof EmptyResultDataAccessException));
 		}
 	}
-	
+
 	@Test
-	public void getAllProjects() {
+	public void getAllTask() {
 		// given
 		// when
-		Iterable<ProjectEntity> allProjects = projectRepository.findAll();
+		Iterable<TaskEntity> allTasks = taskRepository.findAll();
 		// then
-		assertNotNull(allProjects);
+		assertNotNull(allTasks);
 	}
 
-	private ProjectEntity createAndSaveProject(String projectName) {
-		ProjectEntity project = createProject(projectName);
-		return projectRepository.save(project);
+	private TaskEntity createAndSaveProject(String taskName) {
+		
+		TaskEntity task = createTask(taskName);
+		return taskRepository.save(task);
 	}
 
-	private ProjectEntity createProject(String projectName) {
-		ProjectEntity project = new ProjectEntity();
-		project.setName(projectName);
-		return project;
+	private TaskEntity createTask(String taskName) {
+		TaskEntity task = new TaskEntity();
+		task.setName(taskName);
+		return task;
 	}
 
 }
