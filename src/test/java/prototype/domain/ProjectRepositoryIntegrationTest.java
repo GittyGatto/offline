@@ -98,5 +98,4 @@ public class ProjectRepositoryIntegrationTest {
 		project.setName(projectName);
 		return project;
 	}
-
 }

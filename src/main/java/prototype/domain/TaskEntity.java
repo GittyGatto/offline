@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "task")
 public class TaskEntity {
@@ -23,10 +22,14 @@ public class TaskEntity {
 
 	@Column(name = "name")
 	private String name;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "project_id")
 	private ProjectEntity project;
+
+	public void setProject(ProjectEntity project) {
+		this.project = project;
+	}
 
 	public ProjectEntity getProject() {
 		return project;
@@ -43,6 +46,4 @@ public class TaskEntity {
 	public Long getId() {
 		return id;
 	}
-	
-	
 }
