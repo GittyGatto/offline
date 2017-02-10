@@ -21,4 +21,8 @@ public class TaskBusinessService {
 	public List<TaskEntity> getAllProjectTasks(Long projectId) {
 		return (List<TaskEntity>) taskRepository.findByProjectId(projectId);
 	}
+
+	public void saveTask(TaskEntity task){
+		taskRepository.save(task);
+	}
 }

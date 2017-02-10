@@ -18,12 +18,12 @@
 
 		<form class="form-inline">
 			<div class="form-group">
-				<label for="exampleInputName2">project name</label> <input
+				<label for="exampleInputName1">project name</label> <input
 					type="text" class="form-control" id="exampleInputName2"
 					ng-model="model.name">
 			</div>
-			<button type="submit" c lass="btn btn-primary"
-				ng-click="addProject()">add project</button>
+			<button type="submit" class="btn btn-primary" ng-click="addProject()">add
+				project</button>
 		</form>
 		<hr>
 
@@ -55,6 +55,27 @@
 
 
 	<div class="container" ng-controller="TaskController">
+
+		<!--Task input fields -->
+
+		<form class="form-inline">
+			<div class="form-group">
+				<label for="exampleInputName2">task name</label> <input type="text"
+					class="form-control" id="exampleInputName2" ng-model="model.name">
+
+				<label for="exampleInputName3">for project id</label> 
+				<input type="number" class="form-control" id="exampleInputName2"
+					ng-model="model.projectId">
+			</div>
+			<button type="submit" class="btn btn-primary" ng-click="addTask()">add
+				task</button>
+		</form>
+		<hr>
+
+
+
+		<!--Task table -->
+
 		<table>
 			<thead>
 				<tr>
@@ -88,6 +109,5 @@
 	<script src="projectResource.js"></script>
 	<script src="taskController.js"></script>
 	<script src="taskResource.js"></script>
-
 </body>
 </html>
