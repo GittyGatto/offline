@@ -2,7 +2,6 @@
 <html ng-app="offlineApp" lang="en">
 <head>
 <meta charset="utf-8">
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="lib/css/bootstrap.min.css" rel="stylesheet">
@@ -10,9 +9,14 @@
 </head>
 <body>
 	<!-- Header -->
-	<div>
-		<h2>offline project</h2>
+	<div class="page-header" id="header">
+		<div class="container">
+			<h3>
+				offline <small>project</small>
+			</h3>
+		</div>
 	</div>
+
 
 	<div class="container" ng-controller="ProjectController">
 
@@ -56,26 +60,7 @@
 
 	<div class="container" ng-controller="TaskController">
 
-		<!--Task input fields -->
-
-		<form class="form-inline">
-			<div class="form-group">
-				<label for="exampleInputName2">task name</label> <input type="text"
-					class="form-control" id="exampleInputName2" ng-model="model.name">
-
-				<label for="exampleInputName3">for project id</label> 
-				<input type="number" class="form-control" id="exampleInputName2"
-					ng-model="model.projectId">
-			</div>
-			<button type="submit" class="btn btn-primary" ng-click="addTask()">add
-				task</button>
-		</form>
-		<hr>
-
-
-
 		<!--Task table -->
-
 		<table>
 			<thead>
 				<tr>
@@ -105,9 +90,9 @@
 
 	<script src="lib/js/bootstrap.min.js"></script>
 	<script src="app.js"></script>
-	<script src="projectController.js"></script>
-	<script src="projectResource.js"></script>
-	<script src="taskController.js"></script>
-	<script src="taskResource.js"></script>
+	<script src="project/projectController.js"></script>
+	<script src="project/projectResource.js"></script>
+	<script src="task/taskController.js"></script>
+	<script src="task/taskResource.js"></script>
 </body>
 </html>
