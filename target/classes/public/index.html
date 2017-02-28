@@ -34,9 +34,10 @@
 
 		<div class="form-group" id="rangedReports">
 			<div>
-				<div class="col-xs-1">id</div>
-				<div class="col-xs-10">text</div>
-				<div class="col-xs-1">action</div>
+			
+				<div class="col-xs-1"><label>id</label></div>
+				<div class="col-xs-10"><label>text</label></div>
+				<div class="col-xs-1"><label>action</label></div>
 			</div>
 			<div ng-repeat="project in model.projectsFromList | orderBy: 'id'"
 				ng-submit="updateProject(project)">
@@ -54,17 +55,9 @@
 						<button type="button" class="btn btn-danger"
 							ng-click="delProject(project.id)">delete</button>
 					</div>
-
-
 				</form>
-
 			</div>
-
-
 		</div>
-
-
-
 	</div>
 
 	<div class="container">
