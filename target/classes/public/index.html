@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="libs/css/bootstrap.min.css" rel="stylesheet">
+<link href="lib/css/bootstrap.min.css" rel="stylesheet">
 <title>offline project</title>
 </head>
 <body>
@@ -31,53 +31,50 @@
 		</form>
 		<hr>
 
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>#id</th>
-					<th>project name</th>
 
-					<th
-						ng-class="{'text-success' : !model.isError, 'text-danger' : model.isError }">
-						<span ng-if="model.isError">ERROR: </span> {{model.message}}
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="project in model.projectsFromList | orderBy: 'id'">
-					<td>{{project.id}}</td>
-					<td><input ng-model="project.name" type="text"
-						value="{{project.name}}"></td>
-					<td><button type="button" class="btn btn-danger"
+		<div class="form-group" id="rangedReports">
+			<div>
+				<div class="col-xs-1">id</div>
+				<div class="col-xs-10">text</div>
+				<div class="col-xs-1">action</div>
+			</div>
+			<div ng-repeat="project in model.projectsFromList | orderBy: 'id'"
+				ng-submit="updateProject(project)">
+				<form name="reportRowForm">
+					<div class="col-xs-1 form-group">{{project.id}}</div>
+
+					<div class="col-xs-10 form-group">
+						<input class="form-control" ng-model="project.name" type="text"
+							value="{{project.name}}" ng-model-options="{debounce: 1000}"
+							ng-change="updateProject(project)">
+					</div>
+
+
+					<div class="col-xs-1 form-group">
+						<button type="button" class="btn btn-danger"
 							ng-click="delProject(project.id)">delete</button>
-						<button type="button" class="btn btn-success"
-							ng-click="updateProject(project)">update</button></td>
-				</tr>
-			</tbody>
-		</table>
+					</div>
+
+
+				</form>
+
+			</div>
+
+
+		</div>
+
+
+
+	</div>
+
+	<div class="container">
+		<a ui-sref="hello" ui-sref-active="active">Hello</a> <a
+			ui-sref="about" ui-sref-active="active">About</a>
+
+		<ui-view></ui-view>
 	</div>
 
 
-	<div class="container" ng-controller="TaskController">
-
-		<!--Task table -->
-		<table>
-			<thead>
-				<tr>
-					<th>#id</th>
-					<th>name</th>
-					<th>#pid</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="task in model.tasksFromList | orderBy: 'id'">
-					<td>{{task.id}}</td>
-					<td>{{task.name}}</td>
-					<td>{{task.project.id}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
 
 
 	<!--Script stuff -->
@@ -88,7 +85,9 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
 
-	<script src="libs/js/bootstrap.min.js"></script>
+	<script src="lib/js/bootstrap.min.js"></script>
+	<script src="lib/angular.min.js"></script>
+	<script src="lib/angular-ui-router.js"></script>
 	<script src="app.js"></script>
 	<script src="projects/projectController.js"></script>
 	<script src="projects/projectResource.js"></script>
