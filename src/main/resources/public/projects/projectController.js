@@ -55,10 +55,8 @@ function ProjectController($scope, ProjectResource, $timeout) {
 	function updateProject(project) {
 		clearMessage();
 		ProjectResource.update(project, onSuccess, onFailure)
-		function onSuccess(savedProject) {
+		function onSuccess() {
 			setMessage('project updated.', false, 2000);
-			model.projectsFromList.push(savedProject);
-			getProjects();
 		}
 		function onFailure() {
 
@@ -69,7 +67,7 @@ function ProjectController($scope, ProjectResource, $timeout) {
 	function addProject() {
 		clearMessage();
 		var project = {
-			name : model.name
+			name : ""
 		};
 		ProjectResource.save(project, onSuccess, onFailure)
 		function onSuccess(savedProject) {

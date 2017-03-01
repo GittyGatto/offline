@@ -20,43 +20,53 @@
 
 	<div class="container" ng-controller="ProjectController">
 
-		<form class="form-inline">
-			<div class="form-group">
-				<label for="exampleInputName1">project name</label> <input
-					type="text" class="form-control" id="exampleInputName2"
-					ng-model="model.name">
-			</div>
-			<button type="submit" class="btn btn-primary" ng-click="addProject()">add
-				project</button>
-		</form>
 		<hr>
 
 
 		<div class="form-group" id="rangedReports">
 			<div>
-			
-				<div class="col-xs-1"><label>id</label></div>
-				<div class="col-xs-10"><label>text</label></div>
-				<div class="col-xs-1"><label>action</label></div>
+				<div class="col-xs-1">
+					<label>id</label>
+				</div>
+				<div class="col-xs-9">
+					<label>text</label>
+				</div>
+				<div class="col-xs-2">
+					<label>action</label>
+				</div>
 			</div>
 			<div ng-repeat="project in model.projectsFromList | orderBy: 'id'"
 				ng-submit="updateProject(project)">
 				<form name="reportRowForm">
 					<div class="col-xs-1 form-group">{{project.id}}</div>
 
-					<div class="col-xs-10 form-group">
+					<div class="col-xs-9 form-group">
 						<input class="form-control" ng-model="project.name" type="text"
 							value="{{project.name}}" ng-model-options="{debounce: 1000}"
 							ng-change="updateProject(project)">
 					</div>
 
 
-					<div class="col-xs-1 form-group">
-						<button type="button" class="btn btn-danger"
-							ng-click="delProject(project.id)">delete</button>
+					<div class="col-xs-2 form-group">
+						<div class="btn-group btn-group-justified" role="group"
+							aria-label="...">
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-default"
+									ng-click="addProject()"">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</div>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-default"
+									ng-click="delProject(project.id)">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
+
 		</div>
 	</div>
 
