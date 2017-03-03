@@ -1,18 +1,23 @@
-var offlineApp = angular.module('offlineApp', [ 'ui.router', 'ngResource' ]);
+angular.module('offlineApp', [ 'ui.router', 'ngResource' ]).config(
+		[ '$stateProvider', '$urlRouterProvider',
+				function($stateProvider, $urlRouterProvider) {
 
-offlineApp.config(function($stateProvider) {
-	  var helloState = {
-	    name: 'hello',
-	    url: '/hello',
-	    template: '<h3>hello world!</h3>'
-	  }
+					$stateProvider.state('dashboard', {
+						url : '/',
+						templateUrl : 'dashboard/dashboard.html',
+						controller : 'DashboardController',
+						controllerAs : 'dashboardCtrl'
+					});
 
-	  var aboutState = {
-	    name: 'about',
-	    url: '/about',
-	    template: '<h3>Its the UI-Router hello world app!</h3>'
-	  }
+					$urlRouterProvider.otherwise('/');
 
-	  $stateProvider.state(helloState);
-	  $stateProvider.state(aboutState);
-	});
+				}//
+		])//
+
+
+.config([ '$resourceProvider', function($resourceProvider) {
+	// Don't strip trailing slashes from calculated URLs
+	$resourceProvider.defaults.stripTrailingSlashes = false;
+} ]) //
+;
+
