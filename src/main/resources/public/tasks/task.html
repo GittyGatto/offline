@@ -3,7 +3,10 @@
 	<hr>
 
 	<div class="form-group" id="rangedReports">
-		<div >
+		<div>
+			<div class="col-xs-2">
+				<label>pid</label>
+			</div>
 			<div class="col-xs-2">
 				<label>id</label>
 			</div>
@@ -11,15 +14,16 @@
 				<label>text</label>
 			</div>
 			<div class="col-xs-2">
-				<label>pid</label>
-			</div>
-			<div class="col-xs-2">
 				<label>action</label>
 			</div>
 		</div>
 		<div ng-repeat="task in model.tasksFromList | orderBy: 'id'"
 			ng-submit="updateTask(task)" class="row">
-			<form name="reportRowForm">				
+			<form name="reportRowForm">
+				<div class="col-xs-2 form-group">
+					<span class="badge">{{task.project.id}}</span>
+				</div>
+
 				<div class="col-xs-2 form-group">{{task.id}}</div>
 
 				<div class="col-xs-6 form-group">
@@ -27,10 +31,6 @@
 						value="{{task.name}}" ng-model-options="{debounce: 1000}"
 						ng-change="updateTask(task)">
 				</div>
-				<div class="col-xs-2 form-group">
-					<div>{{task.project.id}}</div>
-				</div>
-
 				<div class="col-xs-2 form-group">
 					<div class="btn-group btn-group-justified" role="group"
 						aria-label="...">
