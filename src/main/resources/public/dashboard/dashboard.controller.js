@@ -4,12 +4,15 @@
 	angular.module('offlineApp')
 			.controller('DashboardController', DashboardController);
 
-	DashboardController.$inject = [ 'ProjectResource' ];
+	DashboardController.$inject = [ 'ProjectResource', '$scope', '$timeout'  ];
 
 	/* @ngInject */
-	function DashboardController(ProjectResource) {
+	function DashboardController($scope, ProjectResource, $timeout) {
+
+		function greetings() {
+			
+		}
 		
-		
-		
+		greetings();
 	}
 })();

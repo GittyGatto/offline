@@ -15,31 +15,35 @@
 			</h3>
 		</div>
 	</div>
-	
-	<div class="container" >
-		<ul class="nav nav-tabs" >
-		 	<li role="presentation" class="active"><a href="#">Home</a></li>
-		  	<li role="presentation"><a href="#">Profile</a></li>
-  			<li role="presentation"><a href="#">Messages</a></li>
-		</ul>	
+
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li role="presentation"><a ui-sref="dashboard">dashboard</a></li>
+			<li role="presentation"><a ui-sref="project">project</a></li>
+			<li role="presentation"><a ui-sref="task">task</a></li>
+		</ul>
 	</div>
 
 	<div class="container-fluid" ui-view></div>
-	
+
 	<!--Script stuff -->
-	<script>
+	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="lib/js/bootstrap.min.js"></script>
 	<script src="lib/angular.min.js"></script>
 	<script src="lib/angular-ui-router.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
 
 	<script src="app.js"></script>
-	<script src="projects/projectController.js"></script>
-	<script src="projects/projectResource.js"></script>
-	<script src="tasks/taskController.js"></script>
-	<script src="tasks/taskResource.js"></script>
 	<script src="dashboard/dashboard.html"></script>
 	<script src="dashboard/dashboard.controller.js"></script>
+	<script src="projects/project.html"></script>
+	<script src="projects/projectController.js"></script>
+	<script src="projects/projectResource.js"></script>
+	<script src="tasks/task.html"></script>
+	<script src="tasks/taskController.js"></script>
+	<script src="tasks/taskResource.js"></script>
+
 </body>
 </html>
