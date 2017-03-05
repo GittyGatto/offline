@@ -1,5 +1,6 @@
 package prototype.businessService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,29 @@ public class TaskBusinessService {
 	@Autowired
 	private TaskRepository taskRepository;
 
-	public List<TaskEntity> getAllTasks() {
-		return (List<TaskEntity>) taskRepository.findAll();
+	public List<Task> getAllTasks() {
+		List<TaskEntity> taskEntities = taskRepository.findAll();
+		List<Task> tasks = new ArrayList<>(taskEntities.size());
+
+		for (TaskEntity taskEntity : taskEntities) {
+			tasks.add(toTask(taskEntity));
+		}
+		return tasks;
 	}
 
 	public List<TaskEntity> getAllProjectTasks(Long projectId) {
 		return (List<TaskEntity>) taskRepository.findByProjectId(projectId);
 	}
 
-	public void saveTask(TaskEntity task){
+	public void saveTask(TaskEntity task) {
 		taskRepository.save(task);
+	}
+	
+	private Task toTask(TaskEntity taskEntity) {
+		Task task = new Task();
+		task.setId(taskEntity.getId());
+		task.setName(taskEntity.getName());
+		task.setProjectId(taskEntity.getProject().getId());
+		return task;
 	}
 }
