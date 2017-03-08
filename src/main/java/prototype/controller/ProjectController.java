@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import prototype.businessService.Project;
 import prototype.businessService.ProjectBusinessService;
 import prototype.domain.ProjectEntity;
 
@@ -18,8 +19,8 @@ public class ProjectController {
 	private ProjectBusinessService projectBusinessService;
 
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
-	public List<ProjectEntity> getAllProjects() {
-		return (List<ProjectEntity>) projectBusinessService.getAllProjects();
+	public List<Project> getAllProjects() {
+		return (List<Project>) projectBusinessService.getAllProjects();
 	}
 
 	@RequestMapping(value = "/project", method = RequestMethod.POST)

@@ -25,8 +25,14 @@ public class TaskBusinessService {
 		return tasks;
 	}
 
-	public List<TaskEntity> getAllProjectTasks(Long projectId) {
-		return (List<TaskEntity>) taskRepository.findByProjectId(projectId);
+	public List<Task> getAllProjectTasks(Long projectId) {
+		List<TaskEntity> taskEntities =  taskRepository.findByProjectId(projectId);
+		List<Task> tasks = new ArrayList<>(taskEntities.size());
+
+		for (TaskEntity taskEntity : taskEntities) {
+			tasks.add(toTask(taskEntity));
+		}
+		return tasks;
 	}
 
 	public void saveTask(TaskEntity task) {

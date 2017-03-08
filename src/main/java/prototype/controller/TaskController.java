@@ -26,8 +26,8 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "/tasks", method = RequestMethod.GET)
-	public List<TaskEntity> getAllProjectTasks(Long projectId) {
-		return (List<TaskEntity>) taskBusinessService.getAllProjectTasks(projectId);
+	public List<Task> getAllProjectTasks(Long projectId) {
+		return (List<Task>) taskBusinessService.getAllProjectTasks(projectId);
 	}
 
 	@RequestMapping(value = "/task", method = RequestMethod.POST)
