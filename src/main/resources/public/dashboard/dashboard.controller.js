@@ -1,18 +1,24 @@
 (function() {
 	'use strict';
 
-	angular.module('offlineApp')
-			.controller('DashboardController', DashboardController);
+	angular.module('offlineApp').controller('DashboardController',
+			DashboardController);
 
-	DashboardController.$inject = [ 'ProjectResource', '$scope', '$timeout'  ];
+	DashboardController.$inject = [ 'ProjectResource', '$state' ];
 
 	/* @ngInject */
-	function DashboardController($scope, ProjectResource, $timeout) {
+	function DashboardController(ProjectResource, $state) {
 
-		function greetings() {
-			
+		var model = {
+			projectsFromList : []
+		};
+
+		function getProjects() {
+			model.projectsFromList = projectList;
 		}
-		
-		greetings();
+
+		$scope.model = model;
+		getProjects();
+
 	}
 })();
