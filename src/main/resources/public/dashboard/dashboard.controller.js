@@ -7,18 +7,15 @@
 	DashboardController.$inject = [ 'ProjectResource', '$state' ];
 
 	/* @ngInject */
-	function DashboardController(ProjectResource, $state) {
-
-		var model = {
-			projectsFromList : []
-		};
-
+	function DashboardController(ProjectResource, $scope, $state) {
+		var dashboardCtrl = this;
+		
+		dashboardCtrl.projects = [];
+		
 		function getProjects() {
-			model.projectsFromList = projectList;
+			dashboardCtrl.projects = ProjectResource.query();
 		}
 
-		$scope.model = model;
 		getProjects();
-
 	}
 })();
