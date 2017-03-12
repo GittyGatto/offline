@@ -1,6 +1,17 @@
 <div id	"project" ng-cloak>
-	<h3> project 
-		<a ui-sref="project">{{projectCtrl.project.name}}</a>
+	<h3>
+		project <a ui-sref="project">{{projectCtrl.project.name}}</a>
 	</h3>
-			
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item nav-link" ui-sref-active-eq="active"><a
+			ui-sref="project({id: projectCtrl.project.id})"> <i
+				class="fa fa-pencil-square-o"></i> Tasks
+		</a></li>
+	</ul>
+	
+	<ul>
+	<li ng-repeat="task in projectCtrl.project.tasks">{{task.name}}</li>
+	</ul>
+
 </div>
