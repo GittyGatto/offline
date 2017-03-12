@@ -1,89 +1,22 @@
-var offlineApp = angular.module('offlineApp');
+(function() {
+	'use strict';
+	angular.module('offlineApp').controller('ProjectController', ProjectController);
 
-offlineApp.controller('ProjectController', ProjectController,
-		[ 'ProjectResource' ]);
+	ProjectController.$inject = [ '$scope', 'ProjectResource', '$state', '$stateParams' ];
 
-function ProjectController($scope, ProjectResource, $timeout) {
+	/* @ngInject */
+	function ProjectController($scope, ProjectResource, $state, $stateParams) {
+		var projectCtrl = this;
+		var projectId = $stateParams.projectId;
+		
+		projectCtrl.project = {};
+		
+		activate();
 
-	var model = {
-		projectsFromList : [],
-		message : null,
-	isError : false
-	};
-
-	function setMessage(msg, isError, timeout) {
-		model.message = msg;
-		model.isError = isError;
-		if (timeout) {
-			$timeout(clearMessage, timeout);
+		function activate() {
+			projectCtrl.project = ProjectResource.get({
+				id : projectId
+			});
 		}
 	}
-
-	function clearMessage() {
-		setMessage('', false);
-	}
-
-	function getProjects() {
-		clearMessage();
-		ProjectResource.query(onSuccess, onFailure);
-		function onSuccess(projectList) {
-			model.projectsFromList = projectList;
-		}
-		function onFailure() {
-			setMessage('Failed, can\'t get projects.', true);
-		}
-	}
-
-	function delProject(projectId) {
-		clearMessage();
-		var project = {
-			id : projectId
-		};
-
-		ProjectResource.remove(project, onSuccess, onFailure)
-
-		function onSuccess() {
-			getProjects();
-			setMessage('project deleted.', false, 2000);
-		}
-		function onFailure() {
-			setMessage('Failed, can\'t remove project.', true);
-		}
-
-	}
-
-	function updateProject(project) {
-		clearMessage();
-		ProjectResource.update(project, onSuccess, onFailure)
-		function onSuccess() {
-			setMessage('project updated.', false, 2000);
-		}
-		function onFailure() {
-
-			setMessage('Failed, can\'t update project.', true);
-		}
-	}
-
-	function addProject() {
-		clearMessage();
-		var project = {
-			name : ""
-		};
-		ProjectResource.save(project, onSuccess, onFailure)
-		function onSuccess(savedProject) {
-			setMessage('project saved.', false, 2000);
-			model.projectsFromList.push(savedProject);
-		}
-		function onFailure() {
-			setMessage('Failed, can\'t save project.', true);
-		}
-	}
-
-	
-
-	$scope.delProject = delProject;
-	$scope.updateProject = updateProject;
-	$scope.addProject = addProject;
-	$scope.model = model;
-	getProjects();
-}
+})();
