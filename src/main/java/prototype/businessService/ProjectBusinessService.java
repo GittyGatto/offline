@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import prototype.domain.ProjectEntity;
-import prototype.domain.TaskEntity;
 import prototype.repository.ProjectRepository;
-import prototype.repository.TaskRepository;
 
 @Service
 public class ProjectBusinessService {
@@ -48,6 +46,12 @@ public class ProjectBusinessService {
 
 	public void deleteProject(Long projectId) {
 		projectRepository.delete(projectId);
+	}
+
+	public Project getProject(Long projectId) {
+		ProjectEntity projectEntity = projectRepository.findOne(projectId);
+		Project project = toProject(projectEntity);
+		return project;
 	}
 
 }

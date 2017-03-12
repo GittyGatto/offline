@@ -22,6 +22,13 @@ public class ProjectController {
 	public List<Project> getAllProjects() {
 		return (List<Project>) projectBusinessService.getAllProjects();
 	}
+	
+	@RequestMapping(value = "/project/{projectId}", method = RequestMethod.GET)
+	public Project getProject(@PathVariable("projectId") Long projectId)
+	{
+		Project response = this.projectBusinessService.getProject(projectId);
+		return response;
+	}
 
 	@RequestMapping(value = "/project", method = RequestMethod.POST)
 	public ProjectEntity saveProject(@RequestBody ProjectEntity project) {
