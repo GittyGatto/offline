@@ -15,6 +15,12 @@ public class TaskBusinessService {
 	@Autowired
 	private TaskRepository taskRepository;
 
+	public Task getTask(Long id) {
+		TaskEntity taskEntity = taskRepository.getOne(id);
+		Task task = toTask(taskEntity);
+		return task;
+	}
+
 	public List<Task> getAllTasks() {
 		List<TaskEntity> taskEntities = taskRepository.findAll();
 		List<Task> tasks = new ArrayList<>(taskEntities.size());
@@ -26,7 +32,7 @@ public class TaskBusinessService {
 	}
 
 	public List<Task> getAllProjectTasks(Long projectId) {
-		List<TaskEntity> taskEntities =  taskRepository.findByProjectId(projectId);
+		List<TaskEntity> taskEntities = taskRepository.findByProjectId(projectId);
 		List<Task> tasks = new ArrayList<>(taskEntities.size());
 
 		for (TaskEntity taskEntity : taskEntities) {
@@ -38,7 +44,7 @@ public class TaskBusinessService {
 	public void saveTask(TaskEntity task) {
 		taskRepository.save(task);
 	}
-	
+
 	private Task toTask(TaskEntity taskEntity) {
 		Task task = new Task();
 		task.setId(taskEntity.getId());
