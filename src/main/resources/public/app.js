@@ -15,10 +15,14 @@ angular.module('offlineApp', [ 'ui.router', 'ngResource' ]).config(
 						controllerAs : 'projectCtrl'
 					});
 					$stateProvider.state('project.task', {
-						url : '/task/{taskId}',
-						templateUrl : '/tasks/taskdetails.html',
-						controller : 'TaskController',
-						controllerAs : 'taskCtrl'
+						views: {
+							"@":{
+								url : '/task/{taskId}',
+								templateUrl : '/tasks/taskdetails.html',
+								controller : 'TaskController',
+								controllerAs : 'taskCtrl'			
+							}
+						}
 					});
 
 					$urlRouterProvider.otherwise('/');

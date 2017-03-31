@@ -9,7 +9,7 @@
 		var taskCtrl = this;
 		var taskId = $stateParams.taskId;
 		
-		projectCtrl.task = [];
+		taskCtrl.task = [];
 		
 		activate();
 
