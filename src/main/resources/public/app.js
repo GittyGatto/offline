@@ -4,21 +4,21 @@ angular.module('offlineApp', [ 'ui.router', 'ngResource' ]).config(
 
 					$stateProvider.state('dashboard', {
 						url : '/',
-						templateUrl : 'dashboard/dashboard.html',
+						template : require('dashboard/dashboard.html'),
 						controller : 'DashboardController',
 						controllerAs : 'dashboardCtrl'
 					});
 					$stateProvider.state('project', {
-						url : '^/project/{projectId}',
-						templateUrl : 'projects/project.html',
+						url : '^/project/:projectId',
+						template : require('projects/project.html'),
 						controller : 'ProjectController',
 						controllerAs : 'projectCtrl'
 					});
 					$stateProvider.state('project.task', {
+						url : '/task/:taskId',
 						views: {
 							"@":{
-								url : '/task/{taskId}',
-								templateUrl : '/tasks/taskdetails.html',
+								template : require('tasks/taskdetails.html'),
 								controller : 'TaskController',
 								controllerAs : 'taskCtrl'			
 							}

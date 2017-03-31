@@ -21,7 +21,7 @@ public class TaskController {
 	private TaskBusinessService taskBusinessService;
 
 	@RequestMapping(value = "/task/{taskId}", method = RequestMethod.GET)
-	public Task getTask(@PathVariable("taskId") Long taskId){
+	public Task getTask(@PathVariable("taskId") Long taskId) {
 		Task task = taskBusinessService.getTask(taskId);
 		return task;
 	}
