@@ -9,13 +9,11 @@
 	/* @ngInject */
 	function DashboardController(ProjectResource, $scope, $state) {
 		var dashboardCtrl = this;
-		
 		dashboardCtrl.projects = [];
-		
+		getProjects();
+
 		function getProjects() {
 			dashboardCtrl.projects = ProjectResource.query();
 		}
-
-		getProjects();
 	}
 })();

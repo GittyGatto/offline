@@ -1,0 +1,42 @@
+{
+  "name": "offline",
+  "version": "0.0.1",
+  "description": "Something so awesome, you can't imagine!",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GittyGatto/offline.git"
+  },
+  "author": "GittyGatto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GittyGatto/offline/issues"
+  },
+  "homepage": "https://github.com/GittyGatto/offline#readme",
+  "devDependencies": {
+    "angular-resource": "^1.6.4",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-es2015": "^6.24.0",
+    "compression-webpack-plugin": "^0.3.2",
+    "css-loader": "^0.28.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.0",
+    "html-loader": "^0.4.5",
+    "ng-annotate-webpack-plugin": "^0.2.1-pre",
+    "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^0.4.2",
+    "bootstrap": "^3.3.7"
+  }
+}
