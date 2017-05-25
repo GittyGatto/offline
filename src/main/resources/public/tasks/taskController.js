@@ -11,12 +11,39 @@
 		
 		taskCtrl.task = [];
 		
+        
 		activate();
+		
+		var model = {
+				tasksFromList : []
+			};
 
 		function activate() {
 			taskCtrl.task = TaskResource.get({
 				taskId : taskId
 			});
 		}
+		
+		function addNewTask(){
+			var task = {
+				name : model.name,
+				projectId : model.projectId
+			};		
+			
+			TaskResource.save(task, onSuccess)
+            
+            function onSuccess(savedTask) {
+			     model.tasksFromList.push(savedTask);
+		      }
+		}
+        
+        function deleteTask(taskId){
+        	var task = {
+			id : taskId
+            };
+            TaskResource.delete(task);
+            
+  
+        }
 	}
 })();

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import prototype.domain.ProjectEntity;
 import prototype.domain.TaskEntity;
 import prototype.repository.TaskRepository;
 
@@ -14,6 +15,9 @@ public class TaskBusinessService {
 
 	@Autowired
 	private TaskRepository taskRepository;
+	
+	@Autowired
+	private ProjectBusinessService projectBusinessService;
 
 	public Task getTask(Long id) {
 		TaskEntity taskEntity = taskRepository.getOne(id);
@@ -41,8 +45,20 @@ public class TaskBusinessService {
 		return tasks;
 	}
 
-	public void saveTask(TaskEntity task) {
-		taskRepository.save(task);
+	public void saveTask(Task task) {
+		TaskEntity taskEntity = new TaskEntity();
+		taskEntity = toTaskEntity(task);
+		taskRepository.save(taskEntity);
+	}
+
+	private TaskEntity toTaskEntity(Task task) {
+		TaskEntity taskEntity = new TaskEntity();
+		taskEntity.setName(task.getName());
+		
+		ProjectEntity projectEntity = new ProjectEntity();
+		projectEntity = projectBusinessService.getProjectEntity(task.getProjectId());
+		taskEntity.setProject(projectEntity );
+		return taskEntity;
 	}
 
 	private Task toTask(TaskEntity taskEntity) {

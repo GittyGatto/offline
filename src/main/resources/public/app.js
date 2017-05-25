@@ -10,10 +10,12 @@ angular.module('offlineApp', [ 'ui.router', 'ngResource' ]).config(
 					});
 					$stateProvider.state('project', {
 						url : '^/project/:projectId',
-						template : require('projects/project.html'),
-						controller : 'ProjectController',
-						controllerAs : 'projectCtrl'
-					});
+								template : require('projects/project.html'),
+								controller : 'ProjectController',
+								controllerAs : 'projectCtrl'
+						}
+					);
+					
 					$stateProvider.state('project.task', {
 						url : '/task/:taskId',
 						views: {
@@ -21,6 +23,17 @@ angular.module('offlineApp', [ 'ui.router', 'ngResource' ]).config(
 								template : require('tasks/taskdetails.html'),
 								controller : 'TaskController',
 								controllerAs : 'taskCtrl'			
+							}
+						}
+					});
+					
+					$stateProvider.state('project.newtask', {
+						url : '^/project/:projectId',
+						views: {
+							"@":{
+								template : require('tasks/newTask.html'),
+								controller : 'NewTaskController',
+								controllerAs : 'newTaskCtrl'
 							}
 						}
 					});

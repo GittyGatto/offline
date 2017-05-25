@@ -6,6 +6,7 @@ require('dashboard/dashboard.controller')
 require('projects/projectController')
 require('projects/projectResource')
 require('tasks/taskController')
+require('tasks/newTaskController')
 require('tasks/taskResource')
 require('lib/css/bootstrap.css')
 

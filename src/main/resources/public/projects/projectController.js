@@ -3,12 +3,11 @@
 	angular.module('offlineApp').controller('ProjectController',
 			ProjectController);
 
-	ProjectController.$inject = [ '$scope', 'ProjectResource', '$state',
-			'$stateParams', '$timeout' ];
+	ProjectController.$inject = [ 'TaskResource', '$scope', 'ProjectResource', '$state',
+			'$stateParams' ];
 
 	/* @ngInject */
-	function ProjectController($scope, ProjectResource, $state, $stateParams,
-			$timeout) {
+	function ProjectController(TaskResource, $scope, ProjectResource, $state, $stateParams) {
 		var projectCtrl = this;
 		var projectId = $stateParams.projectId;
 

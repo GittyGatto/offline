@@ -13,3 +13,6 @@ Start a webpack-dev-server for combined javascript/css resources with hot reload
     npm start 
 
 
+npm install
+npm run build
+npm start

@@ -53,5 +53,9 @@ public class ProjectBusinessService {
 		Project project = toProject(projectEntity);
 		return project;
 	}
+	
+	public ProjectEntity getProjectEntity(Long id){
+		return projectRepository.findOne(id);
+	}
 
 }
