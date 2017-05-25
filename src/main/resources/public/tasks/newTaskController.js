@@ -16,7 +16,6 @@
 				projectId: $stateParams.projectId
 			}
 			TaskResource.save(task);
-
 		}
 	}
 })();

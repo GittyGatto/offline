@@ -30,11 +30,7 @@
 				projectId : model.projectId
 			};		
 			
-			TaskResource.save(task, onSuccess)
-            
-            function onSuccess(savedTask) {
-			     model.tasksFromList.push(savedTask);
-		      }
+			TaskResource.save(task);
 		}
         
         function deleteTask(taskId){
