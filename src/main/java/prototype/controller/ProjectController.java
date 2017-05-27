@@ -24,8 +24,8 @@ public class ProjectController {
 		return (List<Project>) projectBusinessService.getAllProjects();
 	}
 	
-	@RequestMapping(value = "/project/{projectId}", method = RequestMethod.GET)
-	public Project getProject(@PathVariable("projectId") Long projectId)
+	@RequestMapping(value = "/project/{id}", method = RequestMethod.GET)
+	public Project getProject(@PathVariable("id") Long projectId)
 	{
 		Project response = this.projectBusinessService.getProject(projectId);
 		return response;

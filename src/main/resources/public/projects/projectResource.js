@@ -1,7 +1,7 @@
 var offlineApp = angular.module('offlineApp');
 		
 offlineApp.factory('ProjectResource', [ '$resource', function($resource) {
-	return $resource('/project/:id', null, {
+	return $resource('/project/:projectId', null, {
 		'update' : {
 			method : 'PUT'
 		}

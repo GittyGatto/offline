@@ -17,7 +17,7 @@
 
 		function activate() {
 			projectCtrl.project = ProjectResource.get({
-				id : projectId
+				projectId : projectId
 			});
 		}
 	}

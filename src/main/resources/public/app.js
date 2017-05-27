@@ -8,6 +8,13 @@ angular.module('offlineApp', [ 'ui.router', 'ngResource' ]).config(
 						controller : 'DashboardController',
 						controllerAs : 'dashboardCtrl'
 					});
+                    $stateProvider.state('newProject', {
+						url : '/newProject',
+						template : require('projects/newProject.html'),
+						controller : 'NewProjectController',
+						controllerAs : 'newProjectCtrl'
+					});
+                    
 					$stateProvider.state('project', {
 						url : '^/project/:projectId',
 								template : require('projects/project.html'),

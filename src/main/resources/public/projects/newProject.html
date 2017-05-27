@@ -1,0 +1,25 @@
+<div>
+<div class="container" ng-controller="NewProjectController">
+
+	<div>
+		<h3>add new project</h3>
+	</div>
+
+	<hr>
+
+	<div class="input-group">
+		<span class="input-group-addon" id="sizing-addon2"><span
+			class="glyphicon glyphicon-console" aria-hidden="true"></span></span> 
+        
+        <input
+			type="text" class="form-control" placeholder="project name"
+			aria-describedby="sizing-addon2" ng-model="name">
+	</div>
+
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="submit" class="btn btn-default" ng-click="addProject()"
+                 ui-sref="dashboard">submit</button>
+	</div>
+
+</div>
+</div>
