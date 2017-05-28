@@ -1,5 +1,8 @@
-app.service('projectListService', function(){
+'use strict';
 
-    this.xxx = "yyyy";
+require('angular').module('offlineApp').service('myService', myService);
 
-});
+
+function myService() {
+   
+}

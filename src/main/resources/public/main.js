@@ -9,6 +9,7 @@ require('projects/newProjectController')
 require('tasks/taskController')
 require('tasks/newTaskController')
 require('tasks/taskResource')
+require('service/projectListService')
 require('lib/css/bootstrap.css')
 
 // <script
