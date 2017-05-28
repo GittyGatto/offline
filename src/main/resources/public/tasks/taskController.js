@@ -29,17 +29,7 @@
 				name : model.name,
 				projectId : model.projectId
 			};		
-			
 			TaskResource.save(task);
 		}
-        
-        function deleteTask(taskId){
-        	var task = {
-			id : taskId
-            };
-            TaskResource.delete(task);
-            
-  
-        }
 	}
 })();
