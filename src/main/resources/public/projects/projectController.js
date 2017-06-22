@@ -4,7 +4,7 @@
 			ProjectController);
 
 	ProjectController.$inject = [ 'TaskResource', '$scope', 'ProjectResource',
-			'$state', '$stateParams', 'myService' ];
+			'$state', '$stateParams', 'myService', 'TaskResource' ];
 
 	/* @ngInject */
 	function ProjectController(TaskResource, $scope, ProjectResource, $state,
@@ -14,6 +14,7 @@
 
 		$scope.myService = myService;
 		$scope.myService.project = {};
+		$scope.delTask = delTask;
 
 		activate();
 
@@ -22,5 +23,9 @@
 				projectId : projectId
 			});
 		}
+
+		function delTask(taskId){
+            TaskResource.remove(taskId);
+        }
 	}
 })();

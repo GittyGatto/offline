@@ -33,4 +33,9 @@ public class TaskController {
 		taskBusinessService.saveTask(task);
 		return task;
 	}
+
+	@RequestMapping(value = "/task/{taskId}", method = RequestMethod.DELETE)
+	public void deleteTask(@PathVariable("taskId") Long taskId) {
+		taskBusinessService.deleteTask(taskId);
+	}
 }

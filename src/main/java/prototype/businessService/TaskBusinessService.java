@@ -51,6 +51,10 @@ public class TaskBusinessService {
 		taskRepository.save(taskEntity);
 	}
 
+	public void deleteTask(Long taskId) {
+		taskRepository.delete(taskId);
+	}
+
 	private TaskEntity toTaskEntity(Task task) {
 		TaskEntity taskEntity = new TaskEntity();
 		taskEntity.setName(task.getName());
