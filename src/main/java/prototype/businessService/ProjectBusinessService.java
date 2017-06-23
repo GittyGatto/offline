@@ -18,9 +18,12 @@ public class ProjectBusinessService {
 	@Autowired
 	private TaskBusinessService taskBusinessService;
 
+	@Autowired
+	private TaskCountBusinessService taskCountBusinessService;
+
 	public List<Project> getAllProjects() {
 		List<ProjectEntity> projectEntities = projectRepository.findAll();
-		List<Project> projects = new ArrayList<>(projectEntities.size());
+		List<Project> projects = new ArrayList();
 
 		for (ProjectEntity projectEntity : projectEntities) {
 			projects.add(toProject(projectEntity));
@@ -33,6 +36,7 @@ public class ProjectBusinessService {
 		project.setId(projectEntity.getId());
 		project.setName(projectEntity.getName());
 		project.setTasks(taskBusinessService.getAllProjectTasks(project.getId()));
+		project.setTaskCount(taskCountBusinessService.getTaskCount(project.getId()));
 		return project;
 	}
 

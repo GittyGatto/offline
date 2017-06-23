@@ -14,11 +14,17 @@
 
         $scope.delProject = delProject;
 
-        getProjects();
+        init();
+
+        function init(){
+            getProjects();
+        }
 
         function getProjects() {
             $scope.myService.projects = ProjectResource.query();
+            console.log($scope.myService.projects );
         }
+
         function delProject(projectId){                       
             ProjectResource.remove(projectId);
         }

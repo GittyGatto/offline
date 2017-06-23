@@ -8,6 +8,7 @@ public class Project {
 	private Long id;
 	private String name;
 	private List<Task> tasks;
+	private Integer taskCount;
 
 	public Long getId() {
 		return id;
@@ -33,4 +34,7 @@ public class Project {
 		this.tasks = tasks;
 	}
 
+	public void setTaskCount(Integer taskCount){
+		this.taskCount = taskCount;
+	}
 }
