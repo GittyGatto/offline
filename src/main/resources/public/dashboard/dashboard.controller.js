@@ -22,7 +22,6 @@
 
         function getProjects() {
             $scope.myService.projects = ProjectResource.query();
-            console.log($scope.myService.projects );
         }
 
         function delProject(projectId){                       
