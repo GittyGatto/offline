@@ -3,17 +3,15 @@
 	angular.module('offlineApp').controller('ProjectController',
 			ProjectController);
 
-	ProjectController.$inject = [ 'TaskResource', '$scope', 'ProjectResource',
-			'$state', '$stateParams', 'myService', 'TaskResource' ];
+	ProjectController.$inject = [ 'TaskResource', '$scope', 'ProjectResource', '$stateParams', 'myService', 'TaskResource' ];
 
 	/* @ngInject */
-	function ProjectController(TaskResource, $scope, ProjectResource, $state,
+	function ProjectController(TaskResource, $scope, ProjectResource,
 			$stateParams, myService) {
-		var projectCtrl = this;
 		var projectId = $stateParams.projectId;
 
 		$scope.myService = myService;
-		$scope.myService.project = {};
+		$scope.myService.projects = {};
 		$scope.delTask = delTask;
 
 		activate();
@@ -24,8 +22,9 @@
 			});
 		}
 
-		function delTask(taskId){
+		function delTask(taskId, index){
             TaskResource.remove(taskId);
+            $scope.myService.projects.tasks.splice(index, 1);
         }
 	}
 })();

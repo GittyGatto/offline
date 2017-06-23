@@ -9,6 +9,10 @@
             <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
             new task
         </button>
+        <button type="button" class="btn btn-warning" ui-sref="dashboard">
+            <span class="glyphicon glyphicon glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+            back to dashboard
+        </button>
         <hr>
 
     </div>
@@ -18,7 +22,7 @@
          ng-repeat="task in myService.projects.tasks">
 
         <div class="pull-right btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default" ng-click="delTask({taskId: task.id})"><span
+            <button type="button" class="btn btn-default" ng-click="delTask({taskId: task.id}, $index)"><span
                     class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </div>
 

@@ -11,7 +11,7 @@
          ng-repeat="project in myService.projects">
 
         <div class="pull-right btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default" ng-click="delProject({projectId: project.id})"><span
+            <button type="button" class="btn btn-default" ng-click="delProject({projectId: project.id}, $index)"><span
                     class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </div>
 

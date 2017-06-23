@@ -3,12 +3,10 @@
 
     angular.module('offlineApp').controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = [ 'ProjectResource', '$scope', '$state', '$stateParams', 'myService' ];
+    DashboardController.$inject = [ 'ProjectResource', '$scope', 'myService' ];
 
     /* @ngInject */
-    function DashboardController(ProjectResource, $scope, $state, $stateParams, myService) {
-        var dashboardCtrl = this;
-
+    function DashboardController(ProjectResource, $scope, myService) {
         $scope.myService = myService;
         $scope.myService.projects = [];
 
@@ -24,8 +22,9 @@
             $scope.myService.projects = ProjectResource.query();
         }
 
-        function delProject(projectId){                       
+        function delProject(projectId, index){
             ProjectResource.remove(projectId);
+            $scope.myService.projects.splice(index, 1)
         }
     }
 }

@@ -2,11 +2,10 @@
     'use strict';
     angular.module('offlineApp').controller('NewProjectController', NewProjectController);
 
-    NewProjectController.$inject = [ '$scope', 'ProjectResource', '$state', '$stateParams', 'myService' ];
+    NewProjectController.$inject = [ '$scope', 'ProjectResource', 'myService' ];
 
     /* @ngInject */
-    function NewProjectController($scope, ProjectResource, $state, $stateParams, myService) {
-        var newProjectCtrl = this;
+    function NewProjectController($scope, ProjectResource, myService) {
         $scope.addProject = addProject;
         
         $scope.myService = myService;

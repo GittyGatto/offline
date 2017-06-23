@@ -2,10 +2,10 @@
 	'use strict';
 	angular.module('offlineApp').controller('TaskController', TaskController);
 
-	TaskController.$inject = [ '$scope', 'TaskResource', '$state', '$stateParams' ];
+	TaskController.$inject = ['TaskResource', '$stateParams' ];
 
 	/* @ngInject */
-	function TaskController($scope, TaskResource, $state, $stateParams) {
+	function TaskController(TaskResource, $stateParams) {
 		var taskCtrl = this;
 		var taskId = $stateParams.taskId;
 		
@@ -13,23 +13,11 @@
 		
         
 		activate();
-		
-		var model = {
-				tasksFromList : []
-			};
 
 		function activate() {
 			taskCtrl.task = TaskResource.get({
 				taskId : taskId
 			});
-		}
-		
-		function addNewTask(){
-			var task = {
-				name : model.name,
-				projectId : model.projectId
-			};		
-			TaskResource.save(task);
 		}
 	}
 })();
