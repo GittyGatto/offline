@@ -25,19 +25,9 @@ public class TaskBusinessService {
 		return task;
 	}
 
-	public List<Task> getAllTasks() {
-		List<TaskEntity> taskEntities = taskRepository.findAll();
-		List<Task> tasks = new ArrayList<>(taskEntities.size());
-
-		for (TaskEntity taskEntity : taskEntities) {
-			tasks.add(toTask(taskEntity));
-		}
-		return tasks;
-	}
-
 	public List<Task> getAllProjectTasks(Long projectId) {
 		List<TaskEntity> taskEntities = taskRepository.findByProjectId(projectId);
-		List<Task> tasks = new ArrayList<>(taskEntities.size());
+		List<Task> tasks = new ArrayList();
 
 		for (TaskEntity taskEntity : taskEntities) {
 			tasks.add(toTask(taskEntity));
@@ -46,8 +36,7 @@ public class TaskBusinessService {
 	}
 
 	public void saveTask(Task task) {
-		TaskEntity taskEntity = new TaskEntity();
-		taskEntity = toTaskEntity(task);
+		TaskEntity taskEntity = toTaskEntity(task);
 		taskRepository.save(taskEntity);
 	}
 
@@ -58,9 +47,9 @@ public class TaskBusinessService {
 	private TaskEntity toTaskEntity(Task task) {
 		TaskEntity taskEntity = new TaskEntity();
 		taskEntity.setName(task.getName());
+		taskEntity.setPercentageCompleted(task.getPercentageCompleted());
 		
-		ProjectEntity projectEntity = new ProjectEntity();
-		projectEntity = projectBusinessService.getProjectEntity(task.getProjectId());
+		ProjectEntity projectEntity = projectBusinessService.getProjectEntity(task.getProjectId());
 		taskEntity.setProject(projectEntity );
 		return taskEntity;
 	}
@@ -70,6 +59,7 @@ public class TaskBusinessService {
 		task.setId(taskEntity.getId());
 		task.setName(taskEntity.getName());
 		task.setProjectId(taskEntity.getProject().getId());
+		task.setPercentageCompleted(taskEntity.getPercentageCompleted());
 		return task;
 	}
 }

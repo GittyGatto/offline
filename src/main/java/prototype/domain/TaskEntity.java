@@ -27,6 +27,9 @@ public class TaskEntity {
 	@JoinColumn(name = "project_id")
 	private ProjectEntity project;
 
+	@Column(name = "percentageCompleted")
+	private Integer percentageCompleted;
+
 	public void setProject(ProjectEntity project) {
 		this.project = project;
 	}
@@ -45,5 +48,13 @@ public class TaskEntity {
 
 	public Long getId() {
 		return id;
+	}
+
+	public Integer getPercentageCompleted() {
+		return percentageCompleted;
+	}
+
+	public void setPercentageCompleted(Integer percentageCompleted) {
+		this.percentageCompleted = percentageCompleted;
 	}
 }
