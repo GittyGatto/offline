@@ -34,6 +34,10 @@ public class Project {
 		this.tasks = tasks;
 	}
 
+	public Integer getTaskCount() {
+		return taskCount;
+	}
+
 	public void setTaskCount(Integer taskCount){
 		this.taskCount = taskCount;
 	}
