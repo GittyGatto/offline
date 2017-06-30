@@ -6,7 +6,7 @@ name varchar(80) not null
 create table task (
 id bigserial primary key,
 name varchar(80) not null,
-project_id int8 not null
+project_id bigint not null
 );
 
 alter table task add constraint fk_task_project foreign key (project_id) references project (id);
