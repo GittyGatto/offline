@@ -1,14 +1,6 @@
 package prototype.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "task")
@@ -26,6 +18,10 @@ public class TaskEntity {
 	@ManyToOne
 	@JoinColumn(name = "project_id")
 	private ProjectEntity project;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "parent_id")
+	private TaskEntity parent;
 
 	public void setProject(ProjectEntity project) {
 		this.project = project;
@@ -45,5 +41,17 @@ public class TaskEntity {
 
 	public Long getId() {
 		return id;
+	}
+
+	public TaskEntity getParent() {
+		return parent;
+	}
+
+	public void setParent(TaskEntity parent) {
+		this.parent = parent;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

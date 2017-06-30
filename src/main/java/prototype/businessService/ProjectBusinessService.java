@@ -21,6 +21,9 @@ public class ProjectBusinessService {
 	@Autowired
 	private TaskCountBusinessService taskCountBusinessService;
 
+	@Autowired
+	private TaskListBuilderService taskListBuilderService;
+
 	public List<Project> getAllProjects() {
 		List<ProjectEntity> projectEntities = projectRepository.findAll();
 		List<Project> projects = new ArrayList();
@@ -35,7 +38,7 @@ public class ProjectBusinessService {
 		Project project = new Project();
 		project.setId(projectEntity.getId());
 		project.setName(projectEntity.getName());
-		project.setTasks(taskBusinessService.getAllProjectTasks(project.getId()));
+		project.setTasks(taskListBuilderService.getAllProjectTasks(project.getId()));
 		project.setTaskCount(taskCountBusinessService.getTaskCount(project.getId()));
 		return project;
 	}

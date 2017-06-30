@@ -14,6 +14,9 @@ import prototype.repository.TaskRepository;
 public class TaskBusinessService {
 
 	@Autowired
+	private TaskListBuilderService taskListBuilderService;
+
+	@Autowired
 	private TaskRepository taskRepository;
 	
 	@Autowired
@@ -25,16 +28,6 @@ public class TaskBusinessService {
 		return task;
 	}
 
-	public List<Task> getAllTasks() {
-		List<TaskEntity> taskEntities = taskRepository.findAll();
-		List<Task> tasks = new ArrayList<>(taskEntities.size());
-
-		for (TaskEntity taskEntity : taskEntities) {
-			tasks.add(toTask(taskEntity));
-		}
-		return tasks;
-	}
-
 	public List<Task> getAllProjectTasks(Long projectId) {
 		List<TaskEntity> taskEntities = taskRepository.findByProjectId(projectId);
 		List<Task> tasks = new ArrayList<>(taskEntities.size());
@@ -42,6 +35,7 @@ public class TaskBusinessService {
 		for (TaskEntity taskEntity : taskEntities) {
 			tasks.add(toTask(taskEntity));
 		}
+
 		return tasks;
 	}
 
@@ -70,6 +64,9 @@ public class TaskBusinessService {
 		task.setId(taskEntity.getId());
 		task.setName(taskEntity.getName());
 		task.setProjectId(taskEntity.getProject().getId());
+		if (taskEntity.getParent() != null){
+			task.setParentId(taskEntity.getParent().getId());
+		}
 		return task;
 	}
 }
