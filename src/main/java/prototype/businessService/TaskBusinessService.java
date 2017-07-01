@@ -22,6 +22,9 @@ public class TaskBusinessService {
 	@Autowired
 	private ProjectBusinessService projectBusinessService;
 
+	@Autowired
+	private TaskCountBusinessService taskCountBusinessService;
+
 	public Task getTask(Long id) {
 		TaskEntity taskEntity = taskRepository.getOne(id);
 		Task task = toTask(taskEntity);
@@ -49,6 +52,10 @@ public class TaskBusinessService {
 		taskRepository.delete(taskId);
 	}
 
+	public List<TaskEntity> getAllSubtasks(Long taskId){
+		return taskRepository.findByParentId(taskId);
+	}
+
 	private TaskEntity toTaskEntity(Task task) {
 		TaskEntity taskEntity = new TaskEntity();
 		taskEntity.setName(task.getName());
@@ -67,6 +74,7 @@ public class TaskBusinessService {
 		if (taskEntity.getParent() != null){
 			task.setParentId(taskEntity.getParent().getId());
 		}
+		task.setSubTaskCount(taskCountBusinessService.getSubtaskCount(taskEntity.getId()));
 		return task;
 	}
 }

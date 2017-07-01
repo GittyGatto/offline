@@ -9,6 +9,7 @@ public class Task {
 	private long parentId;
 	private Task parent;
 	private List<Task> subTasks;
+	private Integer subTaskCount;
 
 	public void setId(long id) {
 		this.id = id;
@@ -56,5 +57,13 @@ public class Task {
 
 	public void setParentId(long parentId) {
 		this.parentId = parentId;
+	}
+
+	public Integer getSubTaskCount() {
+		return subTaskCount;
+	}
+
+	public void setSubTaskCount(Integer subTaskCount) {
+		this.subTaskCount = subTaskCount;
 	}
 }

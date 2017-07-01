@@ -11,5 +11,7 @@ import prototype.domain.TaskEntity;
 public interface TaskRepository extends JpaRepository<TaskEntity, Long>{
 
 	List<TaskEntity> findByProjectId(Long projectId);
+
+	List<TaskEntity> findByParentId(Long parentId);
 	
 }
