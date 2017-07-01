@@ -25,6 +25,7 @@ public class TaskBusinessService {
 	@Autowired
 	private TaskCountBusinessService taskCountBusinessService;
 
+
 	public Task getTask(Long id) {
 		TaskEntity taskEntity = taskRepository.getOne(id);
 		Task task = toTask(taskEntity);

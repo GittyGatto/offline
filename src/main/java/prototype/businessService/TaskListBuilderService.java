@@ -12,7 +12,7 @@ public class TaskListBuilderService {
     @Autowired
     private TaskBusinessService taskBusinessService;
 
-    public List<Task> getAllProjectTasks(Long projectId) {
+    public List<Task> getAllParentTasks(Long projectId) {
 
         List<Task> allTasks = taskBusinessService.getAllProjectTasks(projectId);
 
@@ -52,6 +52,14 @@ public class TaskListBuilderService {
         return subTasks;
     }
 
+    public Task getTask(Long taskId) {
+        Task task = taskBusinessService.getTask(taskId);
+        List<Task> allTasks = taskBusinessService.getAllProjectTasks(task.getProjectId());
+        List<Task> subTasks = getSubTasks(allTasks);
+        task.setSubTasks(subTasks);
+        return task;
+    }
+
     private List<Task> getParentTasks(List<Task> allTasks) {
         List<Task> parentTasks = new ArrayList<>();
         for (Task task : allTasks) {
@@ -62,5 +70,4 @@ public class TaskListBuilderService {
         }
         return parentTasks;
     }
-
 }

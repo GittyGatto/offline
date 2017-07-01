@@ -11,15 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import prototype.businessService.Task;
 import prototype.businessService.TaskBusinessService;
+import prototype.businessService.TaskListBuilderService;
 
 @RestController
 public class TaskController {
 	@Autowired
 	private TaskBusinessService taskBusinessService;
 
+	@Autowired
+	private TaskListBuilderService taskListBuilderService;
+
 	@RequestMapping(value = "/task/{taskId}", method = RequestMethod.GET)
 	public Task getTask(@PathVariable("taskId") Long taskId) {
-		Task task = taskBusinessService.getTask(taskId);
+		Task task = taskListBuilderService.getTask(taskId);
 		return task;
 	}
 	

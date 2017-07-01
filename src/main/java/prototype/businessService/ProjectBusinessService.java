@@ -38,7 +38,7 @@ public class ProjectBusinessService {
 		Project project = new Project();
 		project.setId(projectEntity.getId());
 		project.setName(projectEntity.getName());
-		project.setTasks(taskListBuilderService.getAllProjectTasks(project.getId()));
+		project.setTasks(taskListBuilderService.getAllParentTasks(project.getId()));
 		project.setTaskCount(taskCountBusinessService.getTaskCount(project.getId()));
 		return project;
 	}
