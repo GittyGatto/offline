@@ -1,7 +1,8 @@
 <div class="container" ng-controller="DashboardController">
 
     <h3>dashboard</h3>
-    <button type="button" class="btn btn-warning" ui-sref="newProject">
+    <h5>current projects {{myService.projects.length}}</h5>
+    <button type="button" class="btn btn-warning btn-xs" ui-sref="newProject">
         <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
         add project
     </button>
@@ -17,10 +18,10 @@
 
         <div class="panel panel-warning">
             <div class="panel-heading" ui-sref="project({projectId: project.id})">
-                <h3 class="panel-title">{{project.name}}</h3>
+                <h3 class="panel-title">{{project.name}} </h3>
             </div>
            <div class="panel-body">
-                some additional information
+                some additional information project
             </div>
 
             <div class="panel-body">

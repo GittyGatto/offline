@@ -11,11 +11,13 @@
         $scope.myService.projects = [];
 
         $scope.delProject = delProject;
+        $scope.numberOfProjects;
 
         init();
 
         function init(){
             getProjects();
+            getNumberOfProjects();
         }
 
         function getProjects() {
@@ -25,6 +27,10 @@
         function delProject(projectId, index){
             ProjectResource.remove(projectId);
             $scope.myService.projects.splice(index, 1)
+        }
+
+        function getNumberOfProjects(){
+
         }
     }
 }

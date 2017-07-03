@@ -2,18 +2,28 @@
 
     <div>
         <h3>
-            project <a ui-sref="project">{{myService.projects.name}}</a>
+            {{myService.projects.name}}
         </h3>
 
-        <button type="button" class="btn btn-danger" ui-sref="project.newtask">
-            <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
-            new task
-        </button>
-        <button type="button" class="btn btn-warning" ui-sref="dashboard">
-            <span class="glyphicon glyphicon glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
-            back to dashboard
-        </button>
-        <hr>
+        <p>
+            some additional project information
+        </p>
+
+        <p>
+            # of subtasks: {{myService.projects.taskCount}}
+        </p>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-danger btn-xs" ui-sref="project.newtask">
+                <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
+                new task
+            </button>
+            <button type="button" class="btn btn-warning btn-xs" ui-sref="dashboard">
+                <span class="glyphicon glyphicon glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+                back to dashboard
+            </button>
+            <hr>
+        </div>
 
     </div>
 

@@ -2,34 +2,32 @@
 
     <div>
         <h3>
-            taskdetails
+            {{taskCtrl.task.name}}
         </h3>
-        <hr>
+
+        <p>
+            some additional task information
+        </p>
+
+        <p>
+            # of subtasks: {{taskCtrl.task.subTaskCount}}
+        </p>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-danger btn-xs" ui-sref="project.newtask">
+                <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
+                new subtask
+            </button>
+            <button type="button" class="btn btn-warning btn-xs" ui-sref="project({projectId: taskCtrl.task.projectId})">
+                <span class="glyphicon glyphicon glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+                back to project
+            </button>
+            <hr>
+        </div>
+
     </div>
 
 
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-
-                <div class="panel panel-danger">
-
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            {{taskCtrl.task.name}}
-                        </h3>
-                    </div>
-
-                    <div class="panel-body">some additional information</div>
-                    <div class="panel-body">subtask count: {{taskCtrl.task.subTaskCount}}</div>
-
-                </div>
-
-            </div>
-
-            <div ng-repeat="task in taskCtrl.task.subTasks">
-
-
-
-            </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"
          ng-repeat="task in taskCtrl.task.subTasks">
 
@@ -55,4 +53,4 @@
     </div>
 
 
-        </div>
+</div>
